@@ -1,10 +1,9 @@
 class pet():
-    def __init__(self, name, food, water, energy, dead):
+    def __init__(self, name, food, water, energy):
         self.name = name
         self.food = food
         self.water = water
         self.energy = energy
-        self.dead = dead
     def feed(self, feed):
         self.food += feed
         self.energy += feed * 4
@@ -15,15 +14,11 @@ class pet():
         self.energy -= play
         self.food -= play % 4
         self.water -= play % 8
-    def death(self):
-        if self.food or self.water or self.energy < 1:
-            self.dead == True
-        
 
 
-name = input("name?")
-attributes = pet(name, 25, 50, 100, False)
-while attributes.death() is not True:
+name = input("name?")                                
+attributes = pet(name, 25, 50, 100)
+while attributes.food or attributes.water or attributes.energy == 0:
     action = input("What do you want to do?")
     if action == "feed":
         amount = input("how much?")
