@@ -7,12 +7,12 @@ class pet():
         self.happiness = happiness
     def feed(self, feed):
         self.food += feed
-        self.energy += feed * 5
-        self.happiness -= feed *5
+        self.energy += feed * 10
+        self.happiness -= feed * 10
     def drink(self, drink):
         self.water += drink
-        self.energy += drink * 10
-        self.happiness -= drink *10
+        self.energy += drink * 5
+        self.happiness -= drink * 5
     def play(self, play):
         self.happiness += play
         self.energy -= play
@@ -41,17 +41,20 @@ while attributes.food > 0 and attributes.water > 0 and attributes.energy > 0:
     action = input("What do you want to do?")
     if action == "feed":
         amount = input("how much?")
-        amount = int(amount)
+        while amount is not int:
+            amount = input("invalid, how much?")
         attributes.feed(amount)
         print("fed")
     elif action == "drink":
         amount = input("how much?")
-        amount = int(amount)
+        while amount < 1:
+            amount = input("invalid, how much?")
         attributes.drink(amount)
         print("drank")
     elif action == "play":
         amount = input("how long?")
-        amount = int(amount)
+        while amount is not int:
+            amount = input("invalid, how much?")
         attributes.play(amount)
         print(f"{amount} minutes played")
     elif action == "view":
