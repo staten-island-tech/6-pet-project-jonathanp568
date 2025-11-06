@@ -41,19 +41,21 @@ while attributes.food > 0 and attributes.water > 0 and attributes.energy > 0:
     action = input("What do you want to do?")
     if action == "feed":
         amount = input("how much?")
-        while amount is not int:
+        if not amount == int:
             amount = input("invalid, how much?")
-        attributes.feed(amount)
-        print("fed")
+        else:
+            amount = int(amount)
+            attributes.feed(amount)
+            print("fed")
     elif action == "drink":
         amount = input("how much?")
-        while amount < 1:
+        while amount :
             amount = input("invalid, how much?")
         attributes.drink(amount)
         print("drank")
     elif action == "play":
         amount = input("how long?")
-        while amount is not int:
+        while amount :
             amount = input("invalid, how much?")
         attributes.play(amount)
         print(f"{amount} minutes played")
