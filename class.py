@@ -38,25 +38,20 @@ while attributes.food > 0 and attributes.water > 0 and attributes.energy > 0:
     if attributes.happiness > 100:
         print(f"{name} is happy.")
         attributes.happiness = 100
-    action = input("What do you want to do?")
+    action = input("what do you want to do? you could feed, drink, or play.")
     if action == "feed":
         amount = input("how much?")
-        if not amount == int:
-            amount = input("invalid, how much?")
-        else:
-            amount = int(amount)
-            attributes.feed(amount)
-            print("fed")
+        amount = int(amount)
+        attributes.feed(amount)
+        print("fed")
     elif action == "drink":
         amount = input("how much?")
-        while amount :
-            amount = input("invalid, how much?")
+        amount = int(amount)
         attributes.drink(amount)
         print("drank")
     elif action == "play":
         amount = input("how long?")
-        while amount :
-            amount = input("invalid, how much?")
+        amount = int(amount)
         attributes.play(amount)
         print(f"{amount} minutes played")
     elif action == "view":
