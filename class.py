@@ -22,7 +22,14 @@ class pet():
 
 name = input("name?")                                
 attributes = pet(name, 25, 50, 100, 100)
+days = 0
 while attributes.food > 0 and attributes.water > 0 and attributes.energy > 0:
+    days += 1
+    print(f"{days} days passed")
+    attributes.food -= 5
+    attributes.water -= 10
+    attributes.energy += 50
+    attributes.happiness += 50
     if attributes.happiness < 1:
         print(f"{name} didn't wanna live anymore.")
         break
@@ -38,7 +45,7 @@ while attributes.food > 0 and attributes.water > 0 and attributes.energy > 0:
     if attributes.happiness > 100:
         print(f"{name} is happy.")
         attributes.happiness = 100
-    action = input("what do you want to do? you could feed, drink, or play.")
+    action = input("what do you want to do? you could feed, drink, play, or view.")
     if action == "feed":
         amount = input("how much?")
         amount = int(amount)
@@ -56,6 +63,7 @@ while attributes.food > 0 and attributes.water > 0 and attributes.energy > 0:
         print(f"{amount} minutes played")
     elif action == "view":
         print(attributes.__dict__)
+        action = input("what do you want to do? you could feed, drink, play, or view.")
     else:
         print("invalid")
 print(f"{name} died")
