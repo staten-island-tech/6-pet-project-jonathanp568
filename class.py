@@ -7,18 +7,17 @@ class pet():
         self.happiness = happiness
     def feed(self, feed):
         self.food += feed
-        self.energy += feed * 10
-        self.happiness -= feed * 10
+        self.energy += feed * 5
+        self.happiness -= feed * 4
     def drink(self, drink):
         self.water += drink
         self.energy += drink * 5
-        self.happiness -= drink * 5
+        self.happiness -= drink * 2
     def play(self, play):
         self.happiness += play
         self.energy -= play
-        self.food -= play / 5
-        self.water -= play / 10
-
+        self.food -= play / 3
+        self.water -= play / 6
 
 name = input("name?")                                
 attributes = pet(name, 25, 50, 100, 100)
@@ -26,12 +25,15 @@ days = 0
 while attributes.food > 0 and attributes.water > 0 and attributes.energy > 0:
     days += 1
     print(f"{days} days passed")
-    attributes.food -= 5
-    attributes.water -= 10
-    attributes.energy += 50
-    attributes.happiness += 50
+    attributes.food -= 2
+    attributes.water -= 4
+    attributes.energy += 15
+    attributes.happiness -= 5
     if attributes.happiness < 1:
-        print(f"{name} didn't wanna live anymore.")
+        print(f"{name} didn't want to live anymore.")
+        break
+    if attributes.food < 1 or attributes.water < 1 or attributes.energy < 1:
+        print(f"{name} died")
         break
     if attributes.food > 25:
         print(f"{name} is full.")
@@ -45,25 +47,31 @@ while attributes.food > 0 and attributes.water > 0 and attributes.energy > 0:
     if attributes.happiness > 100:
         print(f"{name} is happy.")
         attributes.happiness = 100
-    action = input("what do you want to do? you could feed, drink, play, or view.")
-    if action == "feed":
-        amount = input("how much?")
-        amount = int(amount)
-        attributes.feed(amount)
-        print("fed")
-    elif action == "drink":
-        amount = input("how much?")
-        amount = int(amount)
-        attributes.drink(amount)
-        print("drank")
-    elif action == "play":
-        amount = input("how long?")
-        amount = int(amount)
-        attributes.play(amount)
-        print(f"{amount} minutes played")
-    elif action == "view":
-        print(attributes.__dict__)
+    actions = 0
+    while actions < 2:
         action = input("what do you want to do? you could feed, drink, play, or view.")
-    else:
-        print("invalid")
-print(f"{name} died")
+        if action == "view":
+            print(attributes.__dict__)
+        elif action == "feed":
+            amount = input("how much?")
+            amount = int(amount)
+            attributes.feed(amount)
+            print("fed")
+            actions += 1
+        elif action == "drink":
+            amount = input("how much?")
+            amount = int(amount)
+            attributes.drink(amount)
+            print("drank")
+            actions += 1
+        elif action == "play":
+            amount = input("how long?")
+            amount = int(amount)
+            attributes.play(amount)
+            print(f"{amount} minutes played")
+            actions += 1
+        else:
+            print("invalid")
+        if attributes.food < 1 or attributes.water < 1 or attributes.energy < 1:
+            print(f"{name} died")
+            break
