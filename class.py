@@ -16,8 +16,8 @@ class pet():
     def play(self, play):
         self.happiness += play
         self.energy -= play
-        self.food -= play / 5
-        self.water -= play / 10
+        self.food -= play / 10
+        self.water -= play / 20
     def start(food, water, energy, happiness):
         name = input("name?")
         attributes = pet(name, food, water, energy, happiness)    
@@ -27,7 +27,7 @@ class pet():
             print(f"{days} days passed")
             attributes.food -= 2
             attributes.water -= 4
-            attributes.energy += 10
+            attributes.energy += 5
             attributes.happiness -= 10
             if attributes.happiness < 1:
                 print(f"{name} didn't want to live anymore.")
