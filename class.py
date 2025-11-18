@@ -53,8 +53,8 @@ class pet():
                 if action == "view":
                     print(attributes.__dict__)
                 elif action == "feed":
-                    amount = input("how much?")
                     amount = int(amount)
+                    amount = input("how much?")
                     attributes.feed(amount)
                     print(f"fed {amount} food")
                     actions += 1
