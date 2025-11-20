@@ -18,6 +18,10 @@ class pet():
         self.energy -= play
         self.food -= play / 10
         self.water -= play / 20
+    def ask(amount):
+        amount = input("how much?")
+        while not any(ch.isdigit() for ch in amount):
+            amount = input("invalid, how much?")
     def start(food, water, energy, happiness):
         name = input("name?")
         attributes = pet(name, food, water, energy, happiness)    
@@ -53,20 +57,17 @@ class pet():
                 if action == "view":
                     print(attributes.__dict__)
                 elif action == "feed":
-                    amount = int(amount)
-                    amount = input("how much?")
+                    pet.check(amount)
                     attributes.feed(amount)
                     print(f"fed {amount} food")
                     actions += 1
                 elif action == "drink":
-                    amount = input("how much?")
-                    amount = int(amount)
+                    pet.check(amount)
                     attributes.drink(amount)
                     print(f"drank {amount} water")
                     actions += 1
                 elif action == "play":
-                    amount = input("how long?")
-                    amount = int(amount)
+                    pet.check(amount)
                     attributes.play(amount)
                     print(f"{amount} minutes played")
                     actions += 1
@@ -90,4 +91,4 @@ class pet():
                 if attributes.food < 1 or attributes.water < 1 or attributes.energy < 1:
                     print(f"{name} died")
                     break
-pet.start(25, 50, 100, 100)
+pet.start(25, 50, 100, 100) 
