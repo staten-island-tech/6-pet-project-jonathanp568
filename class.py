@@ -65,12 +65,22 @@ class pet():
                     actions += 1
                 elif action == "drink":
                     amount = input("how much?")
+                    while amount.islower() or amount.isupper() or not amount.isdigit():
+                        if amount.islower() or amount.isupper() or not amount.isdigit():
+                            amount = input("invalid, how much?")
+                        else:
+                            amount = int(amount)
                     amount = int(amount)
                     attributes.drink(amount)
                     print(f"drank {amount} water")
                     actions += 1
                 elif action == "play":
                     amount = input("how much?")
+                    while amount.islower() or amount.isupper() or not amount.isdigit():
+                        if amount.islower() or amount.isupper() or not amount.isdigit():
+                            amount = input("invalid, how much?")
+                        else:
+                            amount = int(amount)
                     amount = int(amount)
                     attributes.play(amount)
                     print(f"{amount} minutes played")
